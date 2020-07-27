@@ -1,0 +1,28 @@
+{
+  "name": "gatsby-plugin-css-modules-emoji",
+  "version": "1.0.9",
+  "description": "The Gatsby Plugin that replace CSS Modules Class selectors by Emojis",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"No build script setup\""
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Halo-Lab/gatsby-plugin-css-modules-emoji"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "emoji",
+    "css modules"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "emojis-list": "^3.0.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.1.0",
+    "node-sass": "^4.14.1"
+  }
+}
