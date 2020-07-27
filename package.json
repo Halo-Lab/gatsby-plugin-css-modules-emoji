@@ -16,7 +16,7 @@
     "emoji",
     "css modules"
   ],
-  "author": "",
+  "author": "Halo lab",
   "license": "ISC",
   "dependencies": {
     "emojis-list": "^3.0.0"
