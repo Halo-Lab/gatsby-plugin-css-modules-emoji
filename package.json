@@ -7,8 +7,8 @@
     "build": "echo \"No build script setup\""
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Halo-Lab/gatsby-plugin-css-modules-emoji"
+    "type": "git",
+    "url": "https://github.com/Halo-Lab/gatsby-plugin-css-modules-emoji"
   },
   "keywords": [
     "gatsby",
