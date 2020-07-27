@@ -10,7 +10,7 @@ The plugin will create a unique emoji combination for each CSS selector. Compati
 
 ## Install
 
-`npm i gatsby-plugin-css-modules-emoji`
+`npm install --save gatsby-plugin-css-modules-emoji`
 
 ## How to use
 
@@ -43,15 +43,15 @@ module.exports = {
 
 ## Options
 
-`enableOnDevelopment` - allows you to disable Emoji selectors while in develop mode. The default value is **true**.
+* `enableOnDevelopment` - allows you to disable Emoji selectors while in develop mode. The default value is **true**.
 
-`selectorLength` - define selector length. The default and minimum required length is **3 emojis**.
+* `selectorLength` - define selector length. The default and minimum required length is **3 emojis**.
 
 ## Browser support 
 
 Some of emojis filtered due to Chrome support. Were excluded:
 
-- Emojis that includes ZWJ
+- Emojis that includes ZWJ ([What does ZWJ stand for?](https://en.wikipedia.org/wiki/Zero-width_joiner))
 - Flags 
 - Letter symbols
 - Other emojis that displayed incorrectly in Chrome DevTools
