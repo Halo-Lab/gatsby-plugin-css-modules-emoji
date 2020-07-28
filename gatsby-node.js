@@ -14,7 +14,7 @@ emojisList = emojisList.filter(emoji => (
   !emoji.match(new RegExp(`${regExpZWJ}|${regExpFlags}|${regExpLetters}|${regExpChromeIncompatible}`, 'g'))
 ));
 
-function randomEmoji(length, emojisList) {
+function randomEmojiIdent(length, emojisList) {
   let result = '';
 
   for (let i = 0; i < length; i++) {
@@ -24,21 +24,21 @@ function randomEmoji(length, emojisList) {
   return result;
 }
 
-function emojiiIdent(path, localName, selectorLength = 3) {
+function emojiIdent(path, localName, selectorLength = 3) {
   if(indentList[`${path}_${localName}`]) {
     return indentList[`${path}_${localName}`]
   }
 
-  let randomEmojii = randomEmoji(selectorLength, emojisList);
+  let currentEmojiIdent = randomEmojiIdent(selectorLength, emojisList);
 
-  while (emojisIdentList.includes(randomEmojii)) {
-    randomEmojii = randomEmoji(selectorLength, emojisList);
+  while (emojisIdentList.includes(currentEmojiIdent)) {
+    currentEmojiIdent = randomEmojiIdent(selectorLength, emojisList);
   }
 
-  emojisIdentList.push(randomEmojii);
-  indentList[`${path}_${localName}`] = randomEmojii;
+  emojisIdentList.push(currentEmojiIdent);
+  indentList[`${path}_${localName}`] = currentEmojiIdent;
 
-  return `${randomEmojii}`;
+  return `${currentEmojiIdent}`;
 }
 
 exports.onCreateWebpackConfig = (
@@ -72,7 +72,7 @@ exports.onCreateWebpackConfig = (
         options.getLocalIdent = (context, localIdentName, localName, options) => {
           const path = context.resourcePath
           currentId++
-          return emojiiIdent(path, localName, selectorLength)
+          return emojiIdent(path, localName, selectorLength)
         }
       }
     }
