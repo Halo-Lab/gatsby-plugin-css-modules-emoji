@@ -26,6 +26,8 @@ module.exports = {
 
 If you want to configure the plugin, take a look at available options below:
 
+> ⚠️ Any changes require the server be restarted.
+
 ```javascript
 // In your gatsby-config.js
 module.exports = {
