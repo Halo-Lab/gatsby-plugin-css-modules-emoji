@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-css-modules-emoji",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "The Gatsby Plugin that replace CSS Modules Class selectors by Emojis",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,6 @@
     "emojis-list": "^3.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^2.1.0",
-    "node-sass": "^4.14.1"
+    "gatsby": "^2.0.0 || ^3.0.0"
   }
 }

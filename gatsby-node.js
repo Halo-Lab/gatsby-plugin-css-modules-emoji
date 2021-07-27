@@ -8,7 +8,6 @@ const regExpLetters = '([\uD83C][\uDDE6-\uDDFF])';
 
 const emojisIdentList = [];
 const indentList = {};
-let currentId = 0;
 
 emojisList = emojisList.filter(emoji => (
   !emoji.match(new RegExp(`${regExpZWJ}|${regExpFlags}|${regExpLetters}|${regExpChromeIncompatible}`, 'g'))
@@ -27,7 +26,7 @@ function randomEmojiIdent(length, emojisList) {
 function emojiIdent(path, localName, selectorLength = 3) {
   if(indentList[`${path}_${localName}`]) {
     return indentList[`${path}_${localName}`]
-  }
+  };
 
   let currentEmojiIdent = randomEmojiIdent(selectorLength, emojisList);
 
@@ -41,18 +40,21 @@ function emojiIdent(path, localName, selectorLength = 3) {
   return `${currentEmojiIdent}`;
 }
 
+console.log(exports.onCreateWebpackConfig);
+
 exports.onCreateWebpackConfig = (
   { actions, getConfig, stage },
   { enableOnDevelopment = true, selectorLength }
 ) => {
   if (!enableOnDevelopment && stage.startsWith(`develop`)) {
-    return
+    return;
   }
   if(selectorLength < 3 || selectorLength > emojisList.length) {
-    throw new Error(`Plugin 'gatsby-plugin-css-modules-emoji' Incorrect settings: selectorLength should be in range 3-${emojisList.length} emojis`)
+    throw new Error(`Plugin 'gatsby-plugin-css-modules-emoji' Incorrect settings: selectorLength should be in range 3-${emojisList.length} emojis`);
   }
 
-  const config = getConfig()
+  const config = getConfig();
+
   const rules = config.module.rules.filter(({ oneOf }) =>
     oneOf &&
     Array.isArray(oneOf) &&
@@ -64,19 +66,29 @@ exports.onCreateWebpackConfig = (
     )
   )
 
-  for (let { oneOf } of rules) {
-    for (let { use } of oneOf) {
-      if (!use) continue
-      for (let { options } of use) {
-        if (!options || !options.localIdentName) continue
-        options.getLocalIdent = (context, localIdentName, localName, options) => {
-          const path = context.resourcePath
-          currentId++
-          return emojiIdent(path, localName, selectorLength)
-        }
-      }
-    }
+  const getLocalIdent = (context, _, localName) => {
+    const path = context.resourcePath;
+
+    return emojiIdent(path, localName, selectorLength);
   }
 
-  actions.replaceWebpackConfig(config)
+  for (let { oneOf } of rules) {
+    for (let { use } of oneOf) {
+      if (!use) continue;
+
+      for (let { options } of use) {
+        // css-loader <= v2.0.0
+        if(!!options?.localIdentName) {
+          options.getLocalIdent = getLocalIdent;
+        }
+
+        // css-loader >= v3.0.0
+        if (!!options?.modules?.localIdentName) {
+          options.modules.getLocalIdent = getLocalIdent;
+        };
+      };
+    };
+  };
+
+  actions.replaceWebpackConfig(config);
 }
