@@ -1,6 +1,6 @@
-# gatsby-plugin-css-modules-emoji
+# gatsby-plugin-css-modules-emoji 
 
-Replace CSS Modules Class selectors by Emojis. 
+Replace CSS Modules Class selectors by Emojis. `Supports Gatsby v3`
 
 ![emoji selectors](https://i.ibb.co/RPxfpP8/gatsby-plugin-emojis.png)
 
