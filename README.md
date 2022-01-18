@@ -57,3 +57,11 @@ Some of emojis filtered due to Chrome support. Were excluded:
 - Flags 
 - Letter symbols
 - Other emojis that displayed incorrectly in Chrome DevTools
+
+## Word from author
+
+Have fun! ✌️
+
+<a href="https://www.halo-lab.com/?utm_source=github">
+  <img src="https://dgestran.sirv.com/Images/supported-by-halolab.png" alt="Supported by Halo lab" height="60">
+</a>
